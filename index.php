@@ -30,10 +30,10 @@
         foreach ($etudiants as $e) {
             echo "<tr>";
             echo "<td>{$e['id']}</td>";
-            echo "<td>{$e['nom']}</td>";
-            echo "<td>{$e['prenom']}</td>";
-            echo "<td>{$e['email']}</td>";
-            echo "<td>{$e['filiere']}</td>";
+            echo "<td>" . $e['nom'] . "</td>";
+            echo "<td>" . $e['prenom'] . "</td>";
+            echo "<td>" . $e['email'] . "</td>";
+            echo "<td>" . $e['filiere'] . "</td>";
             echo "<td>{$e['note']}</td>";
             echo "<td>
                     <a href='edit.php?id={$e['id']}'>Modifier</a> |

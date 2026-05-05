@@ -1,4 +1,11 @@
-<?php require 'db.php'; ?>
+<?php
+session_start();
+require 'db.php';
+
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,7 +13,6 @@
   <title>Gestion des étudiants</title>
 </head>
 <body>
-
   <h1>Liste des étudiants</h1>
   <a href="create.php">+ Ajouter un étudiant</a>
 
@@ -37,8 +43,8 @@
             echo "<td>{$e['note']}</td>";
             echo "<td>
                     <a href='edit.php?id={$e['id']}'>Modifier</a> |
-                    <a href='delete.php?id={$e['id']}'
-                       onclick='return confirm(\"Supprimer ?\")'>
+                    <a href='delete.php?id={$e['id']}&token={$_SESSION['csrf_token']}'
+                       onclick='return confirm(\"Supprimer cet étudiant ?\")'>
                        Supprimer</a>
                   </td>";
             echo "</tr>";
@@ -46,6 +52,5 @@
       ?>
     </tbody>
   </table>
-
 </body>
 </html>

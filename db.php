@@ -12,6 +12,9 @@ try {
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
 } catch (PDOException $e) {
-    die("Connexion échouée : " . $e->getMessage());
+    // ✅ SECURISE : message générique pour l'utilisateur
+    // L'erreur réelle est loggée dans un fichier privé
+    error_log("DB Error: " . $e->getMessage(), 3, "logs/errors.log");
+    die("Une erreur est survenue. Veuillez réessayer plus tard.");
 }
 ?>

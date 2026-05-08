@@ -16,20 +16,6 @@ CREATE TABLE IF NOT EXISTS etudiants (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Table admin
-CREATE TABLE IF NOT EXISTS admins (
-    id         INT AUTO_INCREMENT PRIMARY KEY,
-    email      VARCHAR(150) NOT NULL UNIQUE,
-    password   VARCHAR(255) NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
--- Admin par défaut
--- Email    : admin@student.com
--- Password : admin123
-INSERT INTO admins (email, password) VALUES
-('admin@student.com', 'admin123');
-
 -- Données de test
 INSERT INTO etudiants (nom, prenom, email, filiere, note) VALUES
 ('Alami',   'Youssef', 'youssef@email.com', 'Informatique',  15.5),
